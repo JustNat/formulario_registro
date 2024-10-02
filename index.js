@@ -1,3 +1,5 @@
+import getAddressFromCep from './getAddressFromCep.js'
+
 // toda vez que ocorrer um evento do tipo "input" no elemento de ID "cpf", faça essa função 
 document.getElementById("cpf").addEventListener("input", (e) => { // parâmetro 'e' refere-se ao evento que ocorreu
     // e.target refere-se ao elemento do HTML que disparou o evento
@@ -46,5 +48,19 @@ function validateEmail(email) {
     if (email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) 
         return true
     else false
-    
 }
+
+document.getElementById('cep').addEventListener('input', (e) => {
+    if (e.target.value.length !== 8) return
+    else {
+        const response = getAddressFromCep(e.target.value)
+        if (response.ok) {
+            document.getElementById("country").value = "Brasil"
+            document.getElementById("state").value = response.uf
+            document.getElementById("city").value = response.cidade
+            document.getElementById("neighborhood").value = response.bairro
+            document.getElementById("street").value = response.endereco
+            document.getElementById("residential-number").value = response.complemento 
+        }
+    }
+})
