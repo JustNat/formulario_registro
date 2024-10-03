@@ -41,6 +41,7 @@ function validateCpf(cpf) {
     return true;
 }
 
+// função para validar o email
 function validateEmail(email) {
     email = email.toLowerCase()
     if (email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/))
@@ -48,25 +49,44 @@ function validateEmail(email) {
     else false
 }
 
+// requisição para pegar o endereço com a informação do CEP pela api viacep
+// deve ser async para indicar que um trecho do código deve ser esperado pelo resto
 async function getAddressFromCep(cep) {
     const url = "https://viacep.com.br/ws"
+    // código prometido
     const response = await fetch(`${url}/${cep}/json`, {
         method: "GET",
     })
+    // se houve uma resposta, retorne um objeto json dessa resposta
     if (response.ok) {
         return response.json()
     }
 }
 
+// preencher os campos de endereço baseado no CEP
 document.getElementById('cep').addEventListener('input', async (e) => {
-    if (e.target.value.length !== 8) return
+    // se os caracteres no campo CEP forem menor que 8, faça o input disponível
+    if (e.target.value.length !== 8) {
+        document.getElementById("country").disabled = false
+        document.getElementById("state").disabled = false
+        document.getElementById("city").disabled = false
+        document.getElementById("neighborhood").disabled = false
+        document.getElementById("street").disabled = false
+    }
+    // caso tiver 8 caracteres e o cep foi encontrado, preencha os campos e os deixe indisponível
     else {
         let response = await getAddressFromCep(e.target.value)
-        document.getElementById("country").value = "Brasil"
-        document.getElementById("state").value = response.bairro
-        document.getElementById("city").value = response.localidade
-        document.getElementById("neighborhood").value = response.bairro
-        document.getElementById("street").value = response.logradouro
+        if (!response.erro === true) {
+            document.getElementById("country").value = "Brasil"
+            document.getElementById("country").disabled = true
+            document.getElementById("state").value = response.uf
+            document.getElementById("state").disabled = true
+            document.getElementById("city").value = response.localidade
+            document.getElementById("city").disabled = true
+            document.getElementById("neighborhood").value = response.bairro
+            document.getElementById("neighborhood").disabled = true
+            document.getElementById("street").value = response.logradouro
+            document.getElementById("street").disabled = true
+        }
     }
 })
-
