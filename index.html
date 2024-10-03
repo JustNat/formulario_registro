@@ -11,10 +11,16 @@
     <link rel="stylesheet" href="index.css">
 </head>
 
-<body>
+<body id="background">
     <div>
         <div id="form-div">
-            <h1>Formulário de Registro</h1>
+            <table>
+                <tr>
+                    <td><img  src="https://png.pngtree.com/element_our/20200609/ourmid/pngtree-children-s-software-programming-image_2230759.jpg" style="width: 100px;" alt="LogoEmpresa"></td>
+                    <td><h1 id ="title">Formulário de Registro</h1></td>
+                </tr>
+            </table>
+          
             <form id="form" autocomplete="on">
                 <label for="name">Nome</label>
                 <input id="name" type="text" />
@@ -42,6 +48,44 @@
                 <input id="street" type="text" />
                 <label for="residential-number">Número</label>
                 <input id="residential-number" type="text" />
+                <label for="profissao">Profissão:</label>
+            <div id="profissao">
+            <select name="profissao">
+                <option value="">Selecione sua profissão</option>
+                <option value="Desenvolvedor">Desenvolvedor</option>
+                <option value="Analista">Analista</option>
+                <option value="Gerente de TI">Gerente de TI</option>
+                <option value="Suporte">Suporte</option>
+            </select>
+        </div>
+            <fieldset id="conehcimentos">
+                <legend>Quais linguagens você conhece?</legend>
+                <label><input type="checkbox" name="linguagem" value="CSS"> CSS</label>
+                <label><input type="checkbox" name="linguagem" value="JS"> JS</label>
+                <label><input type="checkbox" name="linguagem" value="HTML"> HTML</label>
+                <label><input type="checkbox" name="linguagem" value="PHP"> PHP</label>
+                <label><input type="checkbox" name="linguagem" value="SQL"> SQL</label>
+                <label><input type="checkbox" name="linguagem" value="C"> C</label>
+                <label><input type="checkbox" name="linguagem" value="C++"> C++</label>
+                <label><input type="checkbox" name="linguagem" value="JAVA"> JAVA</label>
+                <label><input type="checkbox" name="linguagem" value="Python"> Python</label>
+            </fieldset>
+
+            <fieldset id="experiencia">
+                <legend>Nível de Experiência:</legend>
+                <label><input type="radio" name="nivel" value="Júnior"> Júnior</label>
+                <label><input type="radio" name="nivel" value="Pleno"> Pleno</label>
+                <label><input type="radio" name="nivel" value="Sênior"> Sênior</label>
+                <label><input type="radio" name="nivel" value="Master"> Master</label>
+            </fieldset>
+
+            <label for="infoAdicional">Informações Adicionais:</label>
+            <textarea id="infoAdicional" name="infoAdicional" rows="4"></textarea>
+            <td></td>
+            <div>
+                <button class="button"   type="reset">Limpar</button>
+                <button class="button"  type="submit">Enviar</button>
+            </div>
             </form>
         </div>
     </div>
