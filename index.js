@@ -41,14 +41,6 @@ function validateCpf(cpf) {
     return true;
 }
 
-// função para validar o email
-function validateEmail(email) {
-    email = email.toLowerCase()
-    if (email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/))
-        return true
-    else false
-}
-
 // requisição para pegar o endereço com a informação do CEP pela api viacep
 // deve ser async para indicar que um trecho do código deve ser esperado pelo resto
 async function getAddressFromCep(cep) {
@@ -93,12 +85,9 @@ document.getElementById('cep').addEventListener('input', async (e) => {
     }
 })
 
-document.getElementById('form').addEventListener('onsubmit', (e) => {
+document.getElementById('form').addEventListener('onSubmit', (e) => {
     const cpfValue = document.getElementById('cpf').target.value
-    const email = document.getElementById('email').target.value
     if (!validateCpf(cpfValue)) {
         alert("CPF inválido. Verifique o campo.")
-    } else if (!validateEmail(email)) {
-        alert("Email inválido. Verifique o campo.")
     }
 })

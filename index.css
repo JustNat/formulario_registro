@@ -39,7 +39,7 @@ body {
     justify-items: flex-start;
     justify-content: center;
     align-content: baseline;
-    width: 30%;
+    width: 50%;
 }
 
 #form {
@@ -89,3 +89,290 @@ body {
     color:#ffffff;
     background-color:#414141;
 }
+
+/* Container do checkbox */
+.checkbox-container {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.checkbox-container:hover {
+    color: #4CAF50;
+}
+
+/* Checkbox oculto */
+.checkbox-container input[type="checkbox"] {
+    display: none;
+}
+
+/* Estilo do checkbox personalizado */
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    position: relative;
+    margin-right: 3px;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-container:hover .custom-checkbox {
+    border-color: #4CAF50;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Marca do check */
+.custom-checkbox::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 14px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    top: 0px;
+    left: 6px;
+    display: none;
+    transition: all 0.2s ease;
+}
+
+/* Quando o checkbox é marcado */
+.checkbox-container input[type="checkbox"]:checked + .custom-checkbox {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.checkbox-container input[type="checkbox"]:checked + .custom-checkbox::after {
+    display: flex;
+}
+
+/* Efeito suave de transição do "check" */
+.custom-checkbox::after {
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.checkbox-container input[type="checkbox"]:checked + .custom-checkbox::after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+}
+
+/* Texto do checkbox */
+.checkbox-text {
+    user-select: none;
+    margin-top: 8px;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+/* ---------------------------------------------------- */
+
+/* Container do select */
+.select-container {
+    display: inline-block;
+    position: relative;
+    font-size: 10px;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    max-width: 300px; /* Definindo uma largura máxima ajustável */
+}
+
+/* Estilo do botão select */
+.select-custom {
+    width: 100%;
+    padding: 0.5em;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    background-color: white;
+    color: #333;
+    font-size: 15px;
+    appearance: none; /* Remove o estilo padrão do select */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+    margin-top: 1px;
+}
+
+/* Setinha do select */
+.select-custom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    width: 0.8em;
+    height: 0.5em;
+    background-color: transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #333;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+/* Efeito ao passar o mouse */
+.select-custom:hover {
+    border-color: #4CAF50;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Quando o select está em foco */
+.select-custom:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Container da seta do select */
+.select-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 1.2em;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #333;
+    transform: translateY(-50%);
+}
+
+
+/* ----------------------------------------*/
+
+/* Estilo do fieldset */
+.fieldset-custom {
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding: 1em;
+    margin: 1em 0;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Título do fieldset */
+.fieldset-custom legend {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    padding: 0 10px; 
+    margin-bottom: 0.5em; 
+    background-color: white; 
+}
+
+/* Efeito ao passar o mouse */
+.fieldset-custom:hover {
+    border-color: #4CAF50;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Quando o fieldset está em foco */
+.fieldset-custom:focus-within {
+    border-color: #4CAF50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para os elementos dentro do fieldset */
+.fieldset-custom input,
+.fieldset-custom select,
+.fieldset-custom textarea {
+    width: calc(100% - 1em); 
+    padding: 0.5em;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+    margin-bottom: 1em; 
+}
+
+/* Estilo para o foco dos elementos dentro do fieldset */
+.fieldset-custom input:focus,
+.fieldset-custom select:focus,
+.fieldset-custom textarea:focus {
+    border-color: #4CAF50;
+}
+
+/* Estilo do fieldset */
+.fieldset-custom {
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding: 1em;
+    margin: 1em 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Título do fieldset */
+.fieldset-custom legend {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    background-color: rgba(0, 0, 0, 0);
+    margin-bottom: 1px;
+}
+
+/* Estilo dos rótulos dos radio buttons */
+.fieldset-custom label {
+    display: flex;
+    font-size: 15px;
+    margin-top: 5px;
+    color: #333; 
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Efeito ao passar o mouse nos rótulos */
+.fieldset-custom label:hover {
+    color: #4CAF50; /* Cor do texto ao passar o mouse */
+}
+
+/* Radio buttons ocultos */
+.fieldset-custom input[type="radio"] {
+    display: none; 
+}
+
+/* Estilo do botão de rádio personalizado */
+.radio-custom {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #ccc;
+    border-radius: 50%; 
+    position: relative;
+    margin-right: 10px;
+    transition: border-color 0.3s ease;
+}
+
+/* Quando o radio button está marcado */
+.fieldset-custom input[type="radio"]:checked + .radio-custom {
+    border-color: #4CAF50; 
+}
+
+/* Marca do botão de rádio */
+.fieldset-custom input[type="radio"]:checked + .radio-custom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px; 
+    height: 12px; 
+    background-color: #4CAF50;
+    border-radius: 50%; 
+    transform: translate(-50%, -50%); 
+}
+
