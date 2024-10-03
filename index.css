@@ -1,13 +1,69 @@
+
+#background{
+    background: linear-gradient(120deg, #00092e 28%, #4d0000 100%);
+    }
+
+#title{
+    color: rgb(255, 255, 255);
+    font-family: Arial;
+    font-weight: 800;
+}
+
 #form-div {
     display: flex;
     flex-direction: column;
     justify-items: flex-start;
     justify-content: center;
-    align-content: center;
-    width: 25%;
+    align-content: baseline;
+    width: 30%;
 }
 
 #form {
+    
     display: flex;
     flex-direction: column;
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 5px solid linear-gradient(120deg, #00092e 28%, #4d0000 100%);
+    border-radius: 5px;
+    background-color: #ddd;
+}
+
+#conhecimento {
+    display: flex;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+}
+
+#profissao{
+    display: inline;
+}
+
+
+
+.button {
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:100%;
+    border-radius:12px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    color:#ffffff;
+    background-color:#cc6666;
+    outline:none;
+    border:none;
+    display:inline-block;
+    text-decoration: none;
+    transition: .4s;
+    margin-top: 10px;
+}
+    
+    .button:hover {
+    color:#ffffff;
+    background-color:#414141;
 }
