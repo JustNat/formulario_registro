@@ -1,5 +1,5 @@
 // toda vez que ocorrer um evento do tipo "input" no elemento de ID "cpf", faça essa função 
-document.getElementById("cpf").addEventListener("input", (e) => { // parâmetro 'e' refere-se ao evento que ocorreu
+document.getElementById('cpf').addEventListener("input", (e) => { // parâmetro 'e' refere-se ao evento que ocorreu
     // e.target refere-se ao elemento do HTML que disparou o evento
     // e.target.value é o valor que o elemento HTML possui no momento
     cpf = e.target.value
@@ -90,5 +90,15 @@ document.getElementById('cep').addEventListener('input', async (e) => {
             document.getElementById("street").value = response.logradouro
             document.getElementById("street").disabled = true
         }
+    }
+})
+
+document.getElementById('form').addEventListener('onsubmit', (e) => {
+    const cpfValue = document.getElementById('cpf').target.value
+    const email = document.getElementById('email').target.value
+    if (!validateCpf(cpfValue)) {
+        alert("CPF inválido. Verifique o campo.")
+    } else if (!validateEmail(email)) {
+        alert("Email inválido. Verifique o campo.")
     }
 })
