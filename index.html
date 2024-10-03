@@ -12,15 +12,16 @@
 </head>
 
 <body id="background">
-    <div>
-        <div id="form-div">
-            <table>
-                <tr>
-                    <td><img  src="https://png.pngtree.com/element_our/20200609/ourmid/pngtree-children-s-software-programming-image_2230759.jpg" style="width: 100px;" alt="LogoEmpresa"></td>
-                    <td><h1 id ="title">Formulário de Registro</h1></td>
-                </tr>
-            </table>
-          
+    <div id="main-box">
+            <header id="header" >
+                <div id ="title">
+                    <img  src="https://png.pngtree.com/element_our/20200609/ourmid/pngtree-children-s-software-programming-image_2230759.jpg" 
+                    style="width: 50px; height: 50px; padding: 8px;" 
+                    alt="LogoEmpresa">
+                    <p style="padding: 8px; color: white; font-size: larger;">Formulário de Registro</p>
+                </div>
+            </header>
+            <div id="form-div">
             <form id="form" autocomplete="on">
                 <label for="name">Nome</label>
                 <input id="name" type="text" />
@@ -32,10 +33,10 @@
                 <input id="cpf" type="text" name="cpf" />
                 <label for="email">Email</label>
                 <input id="email" type="email" />
-                <label for="phone">Celular</label>
+                <label for="phone">Celular  (DDD + 9)</label>
                 <input id="phone" type="text" />
                 <label for="cep">CEP</label>
-                <input id="cep" type="number">
+                <input id="cep" type="text">
                 <label for="country">País</label>
                 <input id="country" type="text" />
                 <label for="state">Estado</label>
@@ -48,9 +49,9 @@
                 <input id="street" type="text" />
                 <label for="residential-number">Número</label>
                 <input id="residential-number" type="text" />
-                <label for="profissao">Profissão:</label>
-            <div id="profissao">
-            <select name="profissao">
+                <label for="career">Profissão:</label>
+            <div id="career">
+            <select name="career">
                 <option value="">Selecione sua profissão</option>
                 <option value="Desenvolvedor">Desenvolvedor</option>
                 <option value="Analista">Analista</option>
@@ -60,15 +61,15 @@
         </div>
             <fieldset id="conehcimentos">
                 <legend>Quais linguagens você conhece?</legend>
-                <label><input type="checkbox" name="linguagem" value="CSS"> CSS</label>
-                <label><input type="checkbox" name="linguagem" value="JS"> JS</label>
-                <label><input type="checkbox" name="linguagem" value="HTML"> HTML</label>
-                <label><input type="checkbox" name="linguagem" value="PHP"> PHP</label>
-                <label><input type="checkbox" name="linguagem" value="SQL"> SQL</label>
-                <label><input type="checkbox" name="linguagem" value="C"> C</label>
-                <label><input type="checkbox" name="linguagem" value="C++"> C++</label>
-                <label><input type="checkbox" name="linguagem" value="JAVA"> JAVA</label>
-                <label><input type="checkbox" name="linguagem" value="Python"> Python</label>
+                <label><input type="checkbox" name="language" value="CSS"> CSS</label>
+                <label><input type="checkbox" name="language" value="JS"> JS</label>
+                <label><input type="checkbox" name="language" value="HTML"> HTML</label>
+                <label><input type="checkbox" name="language" value="PHP"> PHP</label>
+                <label><input type="checkbox" name="language" value="SQL"> SQL</label>
+                <label><input type="checkbox" name="language" value="C"> C</label>
+                <label><input type="checkbox" name="language" value="C++"> C++</label>
+                <label><input type="checkbox" name="language" value="JAVA"> JAVA</label>
+                <label><input type="checkbox" name="language" value="Python"> Python</label>
             </fieldset>
 
             <fieldset id="experiencia">
@@ -83,14 +84,14 @@
             <textarea id="infoAdicional" name="infoAdicional" rows="4"></textarea>
             <td></td>
             <div>
-                <button class="button"   type="reset">Limpar</button>
+                <button class="button"  type="reset">Limpar</button>
                 <button class="button"  type="submit">Enviar</button>
             </div>
             </form>
         </div>
     </div>
 
-    <script type="module" src="index.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
