@@ -16,6 +16,8 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 #main-box {
@@ -23,6 +25,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    padding: 15px;
 }
 
 #header {
@@ -33,45 +36,87 @@ body {
 }
 
 #form-div {
-    width: 80%;
     display: flex;
     flex-direction: column;
     justify-items: flex-start;
     justify-content: center;
     align-content: baseline;
-    width: 50%;
 }
 
-#form {
+#form_data {
+  
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    padding: 8px;
+    width: 50%;
+    padding: 20px 20px; 
     margin-top: 5px;
-    border: 5px solid linear-gradient(120deg, #00092e 28%, #4d0000 100%);
-    border-radius: 5px;
+    border: 2px solid rgb(71, 71, 71);
+    border-radius: 30px;
     background-color: #ddd;
 }
 
-#form * {
-    padding: 5px 0 5px 0;
+#subtitle_style{
+    font-family: Arial,;
+    font-weight: bold;
+	max-width: 100%;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    font-size: 20px;
 }
 
-#conhecimento {
+.subtitle_position {
+    font-family: Arial;
+    font-weight: bold;
+    width: 100%;
+
+}
+
+/* Definir estilos dos elementos do form */
+.form-spacing {
+    width: 100%;
+    margin-top: 5px;
     display: flex;
-    margin-top: 15px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-#profissao{
-    display: inline;
+.form-spacing * {
+    font-size: 20px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+/* estilizando elementos do form */
+
+.custom_input {
+	display: flex;
+	align-items: center;
+	position: relative;
+	max-width: 100%;
+}
+
+input {
+	font-size: 18px;
+	padding: 5px 10px;
+	width: 100%;
+	outline: none;
+	background: #FFFFFF;
+	color: #000000;
+	border: 2px solid rgb(71, 71, 71);
+	border-radius: 10px;
+	box-shadow: 3px 3px 2px 0px #E2E2E2;
+	transition: .1s ease;
+}
+
+.input:focus {
+	background: #F2F2F2;
+	border: 2px solid #001361;
+	border-radius: 10px;
 }
 
 .button {
-    font-family:Verdana, Geneva, sans-serif;
+    font-family: Arial, sans-serif;
     font-size:80%;
     border-radius:6px;
     padding: 5px 10px !important;
@@ -90,6 +135,57 @@ body {
     background-color:#414141;
 }
 
+/* ----------------- INICIO SELECT (PROFISSÃO) ----------------------------------- */
+
+.select-work {
+	position: relative;
+}
+
+.select-work select {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 100%;
+	font-size: 15px;
+	padding: 10px 10px 10px 10px;
+	background-color: #FFFFFF;
+	border: 2px solid rgb(71, 71, 71);
+	border-radius: 10px;
+	color: #000000;
+	cursor: pointer;
+	outline: none;
+	box-shadow: 3px 3px 3px -5px #A1B2F6;
+}
+
+.select-work select:focus {
+	background: #F2F2F2;
+	border: 2px solid #12125B;
+	border-radius: 10px;
+}
+
+.select-work::after {
+	content: "";
+	position: absolute;
+	pointer-events: none;
+	top: 50%;
+	right: 20px;
+	transform: translate(0, -50%);
+	width: 17px;
+	height: 17px;
+	background-color: #000000;
+	clip-path: polygon(50% 80%, 0 20%, 100% 20%);
+}
+
+/* ----------------- FIM SELECT (PROFISSÃO) ----------------------------------- */
+
+/* ----------------- inicio CHECKBOX (CSS,JS...) ----------------------------------- */
+
+.checkbox{
+    border-radius: 10px 10px;
+    background-color: white;
+    border: 2px solid rgb(71, 71, 71);
+}
+
+
 /* Container do checkbox */
 .checkbox-container {
     display: inline-flex;
@@ -97,17 +193,27 @@ body {
     cursor: pointer;
     font-size: 16px;
     font-family: Arial, sans-serif;
-    color: #333;
+    color: #000000;
     transition: color 0.3s ease;
 }
 
+.checkbox legend{
+    font-weight: bold;
+    font-size: 15px;
+    color: #000000;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid rgb(71, 71, 71);
+}
+
 .checkbox-container:hover {
-    color: #4CAF50;
+    color: #861b00;
 }
 
 /* Checkbox oculto */
 .checkbox-container input[type="checkbox"] {
-    display: none;
+    width: 0;
 }
 
 /* Estilo do checkbox personalizado */
@@ -125,7 +231,7 @@ body {
 }
 
 .checkbox-container:hover .custom-checkbox {
-    border-color: #4CAF50;
+    border-color: #861b00;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -146,8 +252,8 @@ body {
 
 /* Quando o checkbox é marcado */
 .checkbox-container input[type="checkbox"]:checked + .custom-checkbox {
-    background-color: #4CAF50;
-    border-color: #4CAF50;
+    background-color: #861b00;
+    border-color: #861b00;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: scale(1.1);
 }
@@ -170,209 +276,170 @@ body {
 
 /* Texto do checkbox */
 .checkbox-text {
+    font-family: Arial, sans-serif;
     user-select: none;
     margin-top: 8px;
     margin-right: 10px;
     transition: color 0.3s ease;
 }
 
-/* ---------------------------------------------------- */
+/* ----------------- FIM CHECKBOX (CSS,JS...) ----------------------------------- */
 
-/* Container do select */
-.select-container {
-    display: inline-block;
-    position: relative;
-    font-size: 10px;
-    font-family: Arial, sans-serif;
-    width: 100%;
-    max-width: 300px; /* Definindo uma largura máxima ajustável */
-}
 
-/* Estilo do botão select */
-.select-custom {
-    width: 100%;
-    padding: 0.5em;
-    border: 2px solid #ccc;
-    border-radius: 6px;
+/* ----------------- INICIO FIELDSET (NIVEIS DE EXPERIENCIA) ----------------------------------- */
+
+/* Estilo do fieldset */
+.experience-level {
+    border: 2px solid rgb(71, 71, 71);
+    border-radius: 10px; 
+    padding: 10px !important; 
+    margin: 5px;
     background-color: white;
-    color: #333;
-    font-size: 15px;
-    appearance: none; /* Remove o estilo padrão do select */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    margin-bottom: 10px;
-    margin-top: 1px;
-}
-
-/* Setinha do select */
-.select-custom::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 1em;
-    width: 0.8em;
-    height: 0.5em;
-    background-color: transparent;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #333;
-    pointer-events: none;
-    transform: translateY(-50%);
-}
-
-/* Efeito ao passar o mouse */
-.select-custom:hover {
-    border-color: #4CAF50;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* Quando o select está em foco */
-.select-custom:focus {
-    outline: none;
-    border-color: #4CAF50;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Container da seta do select */
-.select-container::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 1.2em;
-    width: 0;
-    height: 0;
-    pointer-events: none;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #333;
-    transform: translateY(-50%);
-}
-
-
-/* ----------------------------------------*/
-
-/* Estilo do fieldset */
-.fieldset-custom {
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    padding: 1em;
-    margin: 1em 0;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Título do fieldset */
-.fieldset-custom legend {
-    font-size: 1.5em;
-    font-weight: bold;
+.experience-level legend {
+    font-family: Arial;
+    font-size: 15px; 
+    font-weight: bold; 
     color: #333;
-    padding: 0 10px; 
-    margin-bottom: 0.5em; 
-    background-color: white; 
-}
-
-/* Efeito ao passar o mouse */
-.fieldset-custom:hover {
-    border-color: #4CAF50;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* Quando o fieldset está em foco */
-.fieldset-custom:focus-within {
-    border-color: #4CAF50;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Estilo para os elementos dentro do fieldset */
-.fieldset-custom input,
-.fieldset-custom select,
-.fieldset-custom textarea {
-    width: calc(100% - 1em); 
-    padding: 0.5em;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
-    transition: border-color 0.3s ease;
-    margin-bottom: 1em; 
-}
-
-/* Estilo para o foco dos elementos dentro do fieldset */
-.fieldset-custom input:focus,
-.fieldset-custom select:focus,
-.fieldset-custom textarea:focus {
-    border-color: #4CAF50;
-}
-
-/* Estilo do fieldset */
-.fieldset-custom {
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    padding: 1em;
-    margin: 1em 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Título do fieldset */
-.fieldset-custom legend {
-    font-size: 15px;
-    font-weight: bold;
-    color: #333;
-    background-color: rgba(0, 0, 0, 0);
-    margin-bottom: 1px;
+    background-color: white;
+    border: 2px solid rgb(71, 71, 71);
+    border-radius: 10px;
+    padding: 8px !important;
+   
 }
 
 /* Estilo dos rótulos dos radio buttons */
-.fieldset-custom label {
-    display: flex;
-    font-size: 15px;
-    margin-top: 5px;
-    color: #333; 
-    cursor: pointer;
+.experience-level label {
+    font-family: Arial;
+    align-items: center;
+    display: inline-flex;
+    margin-right: 10px;
+    margin-top: 0px;
+    font-size: 15px; 
+    color: #333;
+    cursor: pointer; 
     transition: color 0.3s ease;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* Efeito ao passar o mouse nos rótulos */
-.fieldset-custom label:hover {
-    color: #4CAF50; /* Cor do texto ao passar o mouse */
+.experience-level label:hover {
+    color: #001361; 
 }
 
-/* Radio buttons ocultos */
-.fieldset-custom input[type="radio"] {
-    display: none; 
+/* Radio buttons ocultos para evitar conflito com envio */
+.experience-level input[type="radio"] {
+    width: 0%;
 }
 
 /* Estilo do botão de rádio personalizado */
 .radio-custom {
-    width: 24px;
-    height: 24px;
-    border: 2px solid #ccc;
+    background-color: #ffffff;
+    width: 16px;
+    height: 16px; 
+    border: 2px solid #ccc; 
     border-radius: 50%; 
     position: relative;
-    margin-right: 10px;
-    transition: border-color 0.3s ease;
+    margin-right: 10px; 
+    transition: border-color 0.3s ease; 
 }
 
 /* Quando o radio button está marcado */
-.fieldset-custom input[type="radio"]:checked + .radio-custom {
-    border-color: #4CAF50; 
+.experience-level input[type="radio"]:checked + .radio-custom {
+    border-color: #001361; 
 }
 
 /* Marca do botão de rádio */
-.fieldset-custom input[type="radio"]:checked + .radio-custom::after {
-    content: '';
-    position: absolute;
+.experience-level input[type="radio"]:checked + .radio-custom::after {
+    content: ''; 
+    position: absolute; 
     top: 50%;
     left: 50%;
-    width: 12px; 
-    height: 12px; 
-    background-color: #4CAF50;
+    width: 10px; 
+    height: 10px; 
+    background-color: #861b00; 
     border-radius: 50%; 
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
 }
 
+/*---------- inicio informações adicionais ------------- */ 
+
+/* Estilo do label */
+
+.info-custom {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333; 
+    margin-bottom: 0.5em;
+    display: block; 
+}
+
+/* Estilo do textarea */
+textarea {
+    font-family: Arial, sans-serif;
+    width: calc(100% - 1em); 
+    padding: 10px !important; 
+    border: 2px solid rgb(71, 71, 71); 
+    border-radius: 15px; 
+    font-size: 15px;
+    transition: border-color 0.3s ease; 
+    resize: vertical;
+}
+
+/* Estilo para o foco do textarea */
+textarea:focus {
+    border-color: #861b00; 
+    box-shadow: 0 0 5px #490f00(76, 175, 80, 0.5); 
+}
+
+/* Tamanho Informações Pessoais */
+
+#last-name{
+    width: 380px;
+}
+
+#birthday{
+    width: 130px;
+}
+
+#cpf{
+    width: 130px;
+}
+
+#email{
+    width: 380px;
+}
+
+
+#phone{
+    width: 150px;
+}
+
+/* Tamanho Informações do endereço */
+
+#state{
+    width: 30px;
+}
+
+#country{
+    width: 100px;
+}
+
+#residential-number{
+    width: 100px;
+}
+
+#cep{
+    width: 130px;
+}
+
+.input-error {
+    border: 2px solid red; 
+}
+.error-message {
+    color: red; 
+    margin-top: -10px; 
+    font-size: 0.9em; 
+}

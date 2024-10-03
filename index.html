@@ -13,101 +13,162 @@
 
 <body id="background">
     <div id="main-box">
-            <header id="header" >
-                <div id ="title">
-                    <img  src="https://png.pngtree.com/element_our/20200609/ourmid/pngtree-children-s-software-programming-image_2230759.jpg" 
-                    style="width: 50px; height: 50px; padding: 8px;" 
-                    alt="LogoEmpresa">
-                    <p style="padding: 8px; color: white; font-size: larger;">Formulário de Registro</p>
-                </div>
-            </header>
+        <header id="header">
+            <div id="title">
+                <h1 style="padding: 2px; color: white">Formulário de Registro</h1>
+            </div>
+        </header>
+        <form id="form_data" autocomplete="on" onsubmit="return validarFormulario()">
+            <div class="form-spacing">
+        
+            <div class="subtitle_position"> 
+                <h2 id="subtitle_style" style="margin-top: 0px !important;">Informações pessoais </h2>
+            </div>
+               
+              <div class="custom_input">
+                <input type="text" id="name" placeholder="Nome">
+                <div class="error-message" id="error-name"></div>
+              </div>
+        
+              <div class="custom_input">
+                <input type="text" id="last-name" placeholder="Sobrenome">
+                <div class="error-message" id="error-last-name"></div>
+              </div>
+        
+              <div class="custom_input">
+                <input type="date" id="birthday">
+                <div class="error-message" id="error-birthday"></div>
+              </div>
+        
+              <div class="custom_input">
+                <input type="text" id="cpf" placeholder="CPF">
+                <div class="error-message" id="error-cpf"></div>
+              </div>
+        
+              <div class="custom_input">
+                <input type="email" id="email" placeholder="Email">
+                <div class="error-message" id="error-email"></div>
+              </div>
+        
+              <div class="custom_input">
+                <input type="text" id="phone" placeholder="Telefone">
+                <div class="error-message" id="error-phone"></div>
+              </div>
+
+            <div class="subtitle_position"> 
+                <h2 id="subtitle_style">Informações do endereço </h2>
+            </div>
            
-            <form id="form" autocomplete="on">
-                <label for="name">Nome</label>
-                <input id="name" type="text" required />
-                <label for="last-name">Sobrenome</label>
-                <input id="last-name" type="text" required />
-                <label for="birthday">Data de nascimento</label>
-                <input id="birthday" type="date" required/>
-                <label for="cpf">CPF</label>
-                <input id="cpf" type="text" name="cpf" required/>
-                <label for="email">Email</label>
-                <input id="email" type="email" required/>
-                <label for="phone">Celular  (DDD + 9)</label>
-                <input id="phone" type="text" required/>
-                <label for="cep">CEP</label>
-                <input id="cep" type="text" required/>
-                <label for="country">País</label>
-                <input id="country" type="text" required/>
+            <div class="form-spacing">
+
+              <div class="custom_input">
+                <input type="text" id="cep" placeholder="CEP">
+                <div class="error-message" id="error-cep"></div>
+              </div>
+        
+              <div class="custom_input">
+                <input type="text" id="country" placeholder="País">
+                <div class="error-message" id="error-country"></div>
+              </div>
+        
+              <div class="custom_input">
                 <label for="state">Estado</label>
-                <input id="state" type="text" required/>
+                <input id="state" type="text" />
+              </div>
+        
+              <div class="custom_input">
                 <label for="city">Cidade</label>
-                <input id="city" type="text" required/>
+                <input id="city" type="text" />
+              </div>
+        
+              <div class="custom_input">
                 <label for="neighborhood">Bairro</label>
-                <input id="neighborhood" type="text" required/>
+                <input id="neighborhood" type="text" />
+              </div>
+        
+              <div class="custom_input">
                 <label for="street">Rua</label>
-                <input id="street" type="text" required/>
+                <input style="width: 500px !important;" id="street" type="text" />
+              </div>
+        
+              <div class="custom_input">
                 <label for="residential-number">Número</label>
                 <input id="residential-number" type="text" />
-                <label for="profissao">Profissão:</label>
-                
-            <div class="select-container">
-            <select class="select-custom" name="profissao">
-                <option value="">Selecione sua profissão</option>
-                <option value="Desenvolvedor">Desenvolvedor</option>
-                <option value="Analista">Analista</option>
-                <option value="Gerente de TI">Gerente de TI</option>
-                <option value="Suporte">Suporte</option>
-            </select>
-        </div>
+              </div>
+            </div>
+            </div>
+
+            <div class="subtitle_position"> 
+                <h2 id="subtitle_style">Selecionar cargo desejado</h2>
+            </div>
+
+            <div class="select-work">
+                <select class="select-work" name="profissao">
+                    <option value="">Selecione sua profissão</option>
+                    <option value="Desenvolvedor">Desenvolvedor</option>
+                    <option value="Analista">Analista</option>
+                    <option value="Gerente de TI">Gerente de TI</option>
+                    <option value="Suporte">Suporte</option>
+                </select>
+            </div>
+
             <fieldset class="checkbox">
                 <legend>Quais linguagens você conhece?</legend>
-                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span class="checkbox-text">CSS</span></label>
-                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span class="checkbox-text">JS</span></label>
-                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span class="checkbox-text">HTML</span></label>
-                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span class="checkbox-text">PHP</span></label>
-                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span class="checkbox-text">SQL</span></label>
-                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span class="checkbox-text">C</span></label>
-                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span class="checkbox-text">C++</span></label>
-                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span class="checkbox-text">JAVA</span></label>
-                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span class="checkbox-text">PYTHON</span></label>
+                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span
+                        class="checkbox-text">CSS</span></label>
+                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span
+                        class="checkbox-text">JS</span></label>
+                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span
+                        class="checkbox-text">HTML</span></label>
+                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span
+                        class="checkbox-text">PHP</span></label>
+                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span
+                        class="checkbox-text">SQL</span></label>
+                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span
+                        class="checkbox-text">C</span></label>
+                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span
+                        class="checkbox-text">C++</span></label>
+                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span
+                        class="checkbox-text">JAVA</span></label>
+                <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span
+                        class="checkbox-text">PYTHON</span></label>
             </fieldset>
 
-            <fieldset class="fieldset-custom">
-    <legend>Nível de Experiência:</legend>
-    <label>
-        <input type="radio" name="nivel" value="Júnior">
-        <span class="radio-custom"></span>
-        Júnior
-    </label>
-    <label>
-        <input type="radio" name="nivel" value="Pleno">
-        <span class="radio-custom"></span>
-        Pleno
-    </label>
-    <label>
-        <input type="radio" name="nivel" value="Sênior">
-        <span class="radio-custom"></span>
-        Sênior
-    </label>
-    <label>
-        <input type="radio" name="nivel" value="Master">
-        <span class="radio-custom"></span>
-        Master
-    </label>
-</fieldset>
+            <fieldset class="experience-level">
+                <legend>Nível de Experiência:</legend>
+                <label>
+                    <input type="radio" name="nivel" value="jr">
+                    <span class="radio-custom"></span>
+                    Júnior
+                </label>
+                <label>
+                    <input type="radio" name="nivel" value="pl">
+                    <span class="radio-custom"></span>
+                    Pleno
+                </label>
+                <label>
+                    <input type="radio" name="nivel" value="sr">
+                    <span class="radio-custom"></span>
+                    Sênior
+                </label>
+                <label>
+                    <input type="radio" name="nivel" value="mt">
+                    <span class="radio-custom"></span>
+                    Master
+                </label>
+            </fieldset>
 
-            <label for="infoAdicional">Informações Adicionais:</label>
-            <textarea id="infoAdicional" name="infoAdicional" rows="4"></textarea>
+            <div class="subtitle_position"> 
+                <h2 id="subtitle_style" style="margin-top: 5px !important;">Informações Adicionais</h2>
+            </div>
+            <textarea placeholder="Nos conte um pouco mais..." id="infoAdicional" name="infoAdicional" rows="4"></textarea>
             <td></td>
             <div>
-                <button class="button"  type="reset">Limpar</button>
-                <button class="button"  type="submit">Enviar</button>
+                <button class="button" type="reset">Limpar</button>
+                <button class="button" type="submit">Enviar</button>
             </div>
-            </form>
-     
+        </form>
     </div>
-
     <script src="index.js"></script>
 </body>
 

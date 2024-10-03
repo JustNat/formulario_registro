@@ -1,0 +1,35 @@
+
+
+[ x ]  identifique seus arquivos comentando  o seu nome ou nomes (em caso de dupla ou trio) completos.
+
+
+Requisitos do Formulário:
+
+[ x ]  1. Campos de entrada: Nome, Sobrenome, Data de Nascimento, CPF, E-mail, Telefone, Rua,  Número, Bairro, CEP, Cidade, Estado e País.
+[ x ]  2. Campo Select - Seleção de profissão entre as seguintes opções: Desenvolvedor, Analista, Gerente de TI e Suporte.
+[ x ]  3. Campo de entrada do tipo  Checkbox - Onde o usuário pode marcar mais de uma linguagem que ele conhece:  CSS, JS, HTML, PHP, SQL, C, C++, JAVA, Python.
+[ x ]  4. Campo de entrada do tipo  Radio - Níveis de experiência: Júnior, Pleno, Sênior, Master.
+[ x ]  5. Campo Textarea:  Espaço para o usuário deixar informações adicionais.
+[ x ]  6. Botões:  Reset (para limpar o formulário)  e Submit (para enviar o formulário).
+ 
+Construção do Formulário:
+[ x ]  Utilize HTML para estruturar o formulário com todos os campos listados acima.
+[ x ]  Adicione um input do tipo reset e um input do tipo submit no final do formulário.
+
+Estilização:
+[ x ]  Utilize uma folha de estilo CSS para estilizar o formulário. 
+[ x ]  Crie um arquivo CSS externo para isso.
+[ x ]  O Formulário deve estar centralizado horizontalmente na página.
+
+Validação:
+[  ]  Implemente a validação dos campos utilizando JavaScript.
+[  ]  Verifique se todos os campos  foram preenchidos corretamente.
+[  ]  Verifique se os campos estão vazios, nulos ou incompletos.
+[  ]  Valide o formato do CPF, CEP, e-mail, telefone e data de nascimento.
+[  ]  Garanta que uma opção de profissão e nível de experiência seja selecionada.
+[  ]  Mostre mensagens de erro claras caso alguma validação falhe.
+[  ]  As validações devem ser desenvolvidas de preferencia em um arquivo JavaScript externo.
+
+Entrega:
+[  ]  Formato .zip com todos os arquivos
+[  ]  descrição das validações implementadas em forma de comentário no arquivo fonte.

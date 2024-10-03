@@ -14,32 +14,19 @@ document.getElementById('cpf').addEventListener("input", (e) => { // parâmetro 
     e.target.value = cpf
 })
 
-function validateCpf(cpf) {
-
-    // retira qualquer caractere não numérico
-    cpf.replace(/\D/g, '')
-
-    // se tiver menos de 11 caracteres retorna falso
-    if (cpf.length !== 11) return false;
-    let soma = 0;
-    let resto;
-    if (/^(\d)\1{10}$/.test(cpf)) return false; // Verifica sequências iguais
-
-    // verifica se o CPF é válido utilizando toda lógica de CPF
-    for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
-    resto = (soma * 10) % 11;
-    if ((resto === 10) || (resto === 11)) resto = 0;
-    if (resto !== parseInt(cpf.substring(9, 10))) return false;
-
-    soma = 0;
-    for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
-    resto = (soma * 10) % 11;
-    if ((resto === 10) || (resto === 11)) resto = 0;
-    if (resto !== parseInt(cpf.substring(10, 11))) return false;
-
-    // se passou por toda validação acima, retorna verdadeiro
-    return true;
-}
+document.getElementById('phone').addEventListener("input", (e) => { // parâmetro 'e' refere-se ao evento que ocorreu
+    // e.target refere-se ao elemento do HTML que disparou o evento
+    // e.target.value é o valor que o elemento HTML possui no momento
+    phone = e.target.value
+    // faz com que o campo telefone(phone) seja formatado automaticamente no formato : (XX)X-XXXX-XXXX
+    phone = phone
+    .replace(/\D/g, '') // Remove tudo que não for número
+    .replace(/(\d{0})(\d)/, '$1($2')  // Adiciona o parêntese de abertura antes do primeiro dígito
+    .replace(/(\d{3})(\d)/, '$1) $2')  // Fecha o parêntese após os três primeiros dígitos e adiciona espaço
+    .replace(/(\d{1})(\d{4})(\d{4})/, '$1 $2-$3')// Formata o restante como "9 9865-9520"
+    .replace(/(-\d{4})\d+?$/, '$1');  
+    e.target.value = phone
+})
 
 // requisição para pegar o endereço com a informação do CEP pela api viacep
 // deve ser async para indicar que um trecho do código deve ser esperado pelo resto
@@ -85,9 +72,76 @@ document.getElementById('cep').addEventListener('input', async (e) => {
     }
 })
 
-document.getElementById('form').addEventListener('onSubmit', (e) => {
-    const cpfValue = document.getElementById('cpf').target.value
-    if (!validateCpf(cpfValue)) {
-        alert("CPF inválido. Verifique o campo.")
+
+// Functions de validações especificas do formulario
+
+
+function validateCpf(cpf) {
+
+    // retira qualquer caractere não numérico
+    cpf = cpf.replace(/\D/g, '')
+
+    // se tiver menos de 11 caracteres retorna falso
+    if (cpf.length !== 11) return false;
+    let soma = 0;
+    let resto;
+    if (/^(\d)\1{10}$/.test(cpf)) return false // Verifica sequências iguais
+
+    // verifica se o CPF é válido utilizando toda lógica de CPF
+    for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    resto = (soma * 10) % 11;
+    if ((resto === 10) || (resto === 11)) resto = 0;
+    if (resto !== parseInt(cpf.substring(9, 10))) return false;
+
+    soma = 0;
+    for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    resto = (soma * 10) % 11;
+    if ((resto === 10) || (resto === 11)) resto = 0;
+    if (resto !== parseInt(cpf.substring(10, 11))) return false;
+
+    // se passou por toda validação acima, retorna verdadeiro
+    return true;
+    
+}
+
+
+document.getElementById("form_data").addEventListener("submit", function(event) {
+
+    const DataList = {
+        'Nome': document.getElementById("name").value.trim(),
+        'Sobrenome': document.getElementById("last-name").value.trim(),
+        'Data de Aniversario': document.getElementById("birthday").value,
+        'CPF': document.getElementById("cpf").value,
+        'email': document.getElementById("email").value.trim(),
+        'Telefone': document.getElementById("phone").value.trim(),
+        'CEP': document.getElementById("cep").value,
+        'Pais': document.getElementById("country").value.trim(),
+        'Estado': document.getElementById("state").value.trim(),
+        'Cidade': document.getElementById("city").value.trim(),
+        'Bairro': document.getElementById("neighborhood").value.trim(),
+        'Numero Residencia': document.getElementById("residential-number").value.trim(),
+        'Rua': document.getElementById("street").value.trim(),
+    };
+
+    let camposVazios = [];
+
+    for (const campo in DataList) {
+        if (DataList[campo] === "") {
+            camposVazios.push(campo); // Adiciona o nome do campo vazio ao array
+        }
     }
-})
+
+    // Exibindo os resultados
+    if (camposVazios.length > 0) {
+        alert("Os seguintes campos estão vazios: " + camposVazios.join(', '));
+        event.preventDefault()
+    }
+
+    if (!validateCpf(DataList["CPF"])){
+        alert("CPF Inavlido");
+        event.preventDefault()
+    } else {
+           
+    }}
+
+    )
