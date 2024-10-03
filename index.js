@@ -1,5 +1,3 @@
-import getAddressFromCep from './getAddressFromCep.js'
-
 // toda vez que ocorrer um evento do tipo "input" no elemento de ID "cpf", faça essa função 
 document.getElementById("cpf").addEventListener("input", (e) => { // parâmetro 'e' refere-se ao evento que ocorreu
     // e.target refere-se ao elemento do HTML que disparou o evento
@@ -26,41 +24,49 @@ function validateCpf(cpf) {
     let soma = 0;
     let resto;
     if (/^(\d)\1{10}$/.test(cpf)) return false; // Verifica sequências iguais
-  
+
     // verifica se o CPF é válido utilizando toda lógica de CPF
-    for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i-1, i)) * (11 - i);
+    for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
     resto = (soma * 10) % 11;
     if ((resto === 10) || (resto === 11)) resto = 0;
     if (resto !== parseInt(cpf.substring(9, 10))) return false;
-  
+
     soma = 0;
-    for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i-1, i)) * (12 - i);
+    for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
     resto = (soma * 10) % 11;
     if ((resto === 10) || (resto === 11)) resto = 0;
     if (resto !== parseInt(cpf.substring(10, 11))) return false;
-    
+
     // se passou por toda validação acima, retorna verdadeiro
     return true;
 }
 
 function validateEmail(email) {
     email = email.toLowerCase()
-    if (email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) 
+    if (email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/))
         return true
     else false
 }
 
-document.getElementById('cep').addEventListener('input', (e) => {
+async function getAddressFromCep(cep) {
+    const url = "https://viacep.com.br/ws"
+    const response = await fetch(`${url}/${cep}/json`, {
+        method: "GET",
+    })
+    if (response.ok) {
+        return response.json()
+    }
+}
+
+document.getElementById('cep').addEventListener('input', async (e) => {
     if (e.target.value.length !== 8) return
     else {
-        const response = getAddressFromCep(e.target.value)
-        if (response.ok) {
-            document.getElementById("country").value = "Brasil"
-            document.getElementById("state").value = response.uf
-            document.getElementById("city").value = response.cidade
-            document.getElementById("neighborhood").value = response.bairro
-            document.getElementById("street").value = response.endereco
-            document.getElementById("residential-number").value = response.complemento 
-        }
+        let response = await getAddressFromCep(e.target.value)
+        document.getElementById("country").value = "Brasil"
+        document.getElementById("state").value = response.bairro
+        document.getElementById("city").value = response.localidade
+        document.getElementById("neighborhood").value = response.bairro
+        document.getElementById("street").value = response.logradouro
     }
 })
+
