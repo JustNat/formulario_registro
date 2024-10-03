@@ -24,34 +24,34 @@
            
             <form id="form" autocomplete="on">
                 <label for="name">Nome</label>
-                <input id="name" type="text" />
+                <input id="name" type="text" required />
                 <label for="last-name">Sobrenome</label>
-                <input id="last-name" type="text" />
+                <input id="last-name" type="text" required />
                 <label for="birthday">Data de nascimento</label>
-                <input id="birthday" type="date" />
+                <input id="birthday" type="date" required/>
                 <label for="cpf">CPF</label>
-                <input id="cpf" type="text" name="cpf" />
+                <input id="cpf" type="text" name="cpf" required/>
                 <label for="email">Email</label>
-                <input id="email" type="email" />
+                <input id="email" type="email" required/>
                 <label for="phone">Celular  (DDD + 9)</label>
-                <input id="phone" type="text" />
+                <input id="phone" type="text" required/>
                 <label for="cep">CEP</label>
-                <input id="cep" type="text">
+                <input id="cep" type="text" required/>
                 <label for="country">País</label>
-                <input id="country" type="text" />
+                <input id="country" type="text" required/>
                 <label for="state">Estado</label>
-                <input id="state" type="text" />
+                <input id="state" type="text" required/>
                 <label for="city">Cidade</label>
-                <input id="city" type="text" />
+                <input id="city" type="text" required/>
                 <label for="neighborhood">Bairro</label>
-                <input id="neighborhood" type="text" />
+                <input id="neighborhood" type="text" required/>
                 <label for="street">Rua</label>
-                <input id="street" type="text" />
+                <input id="street" type="text" required/>
                 <label for="residential-number">Número</label>
-                <input id="residential-number" type="text" />
+                <input id="residential-number" type="text" required/>
                 <label for="career">Profissão:</label>
             <div id="career">
-            <select name="career">
+            <select name="career" required>
                 <option value="">Selecione sua profissão</option>
                 <option value="Desenvolvedor">Desenvolvedor</option>
                 <option value="Analista">Analista</option>
@@ -59,25 +59,25 @@
                 <option value="Suporte">Suporte</option>
             </select>
         </div>
-            <fieldset id="conhecimentos">
+            <fieldset id="conhecimentos" form="form">
                 <legend>Quais linguagens você conhece?</legend>
-                <label><input type="checkbox" name="language" value="CSS"> CSS</label>
-                <label><input type="checkbox" name="language" value="JS"> JS</label>
-                <label><input type="checkbox" name="language" value="HTML"> HTML</label>
-                <label><input type="checkbox" name="language" value="PHP"> PHP</label>
-                <label><input type="checkbox" name="language" value="SQL"> SQL</label>
-                <label><input type="checkbox" name="language" value="C"> C</label>
-                <label><input type="checkbox" name="language" value="C++"> C++</label>
-                <label><input type="checkbox" name="language" value="JAVA"> JAVA</label>
-                <label><input type="checkbox" name="language" value="Python"> Python</label>
+                <label for="css" ><input id="css" type="checkbox" name="language" value="CSS"> CSS</label>
+                <label for="js"><input id="js" type="checkbox" name="language" value="JS"> JS</label>
+                <label for="html"><input id="html" type="checkbox" name="language" value="HTML"> HTML</label>
+                <label for="php"><input id="php" type="checkbox" name="language" value="PHP"> PHP</label>
+                <label for="sql"><input id="sql" type="checkbox" name="language" value="SQL"> SQL</label>
+                <label for="c"><input id="c" type="checkbox" name="language" value="C"> C</label>
+                <label for="c++"><input id="c++" type="checkbox" name="language" value="C++"> C++</label>
+                <label for="java"><input id="java" type="checkbox" name="language" value="JAVA"> JAVA</label>
+                <label for="python"><input id="python" type="checkbox" name="language" value="Python"> Python</label>
             </fieldset>
 
-            <fieldset id="experiencia">
+            <fieldset id="experiencia" form="form">
                 <legend>Nível de Experiência:</legend>
-                <label><input type="radio" name="nivel" value="Júnior"> Júnior</label>
-                <label><input type="radio" name="nivel" value="Pleno"> Pleno</label>
-                <label><input type="radio" name="nivel" value="Sênior"> Sênior</label>
-                <label><input type="radio" name="nivel" value="Master"> Master</label>
+                <label for="jr"><input id="jr" type="radio" name="nivel" value="Júnior"> Júnior</label>
+                <label for="pl"><input id="pl" type="radio" name="nivel" value="Pleno"> Pleno</label>
+                <label for="sr"><input id="sr" type="radio" name="nivel" value="Sênior"> Sênior</label>
+                <label for="mt"><input id="mt" type="radio" name="nivel" value="Master"> Master</label>
             </fieldset>
 
             <label for="infoAdicional">Informações Adicionais:</label>
