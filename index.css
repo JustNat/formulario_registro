@@ -1,15 +1,39 @@
+body {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 #background{
     background: linear-gradient(120deg, #00092e 28%, #4d0000 100%);
-    }
+}
 
-#title{
-    color: rgb(255, 255, 255);
-    font-family: Arial;
-    font-weight: 800;
+#title {
+    text-decoration: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#main-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
 }
 
 #form-div {
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-items: flex-start;
@@ -19,7 +43,6 @@
 }
 
 #form {
-    
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -28,6 +51,10 @@
     border: 5px solid linear-gradient(120deg, #00092e 28%, #4d0000 100%);
     border-radius: 5px;
     background-color: #ddd;
+}
+
+#form * {
+    padding: 5px 0 5px 0;
 }
 
 #conhecimento {
@@ -42,8 +69,6 @@
 #profissao{
     display: inline;
 }
-
-
 
 .button {
     font-family:Verdana, Geneva, sans-serif;
@@ -63,7 +88,7 @@
     margin-top: 10px;
 }
     
-    .button:hover {
+.button:hover {
     color:#ffffff;
     background-color:#414141;
 }

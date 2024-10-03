@@ -65,6 +65,8 @@ async function getAddressFromCep(cep) {
 
 // preencher os campos de endereço baseado no CEP
 document.getElementById('cep').addEventListener('input', async (e) => {
+    // impede a entrada de caracteres não numéricos
+    e.target.value = e.target.value.replace(/\D/g, '')
     // se os caracteres no campo CEP forem menor que 8, faça o input disponível
     if (e.target.value.length !== 8) {
         document.getElementById("country").disabled = false
