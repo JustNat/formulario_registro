@@ -226,7 +226,44 @@ function validarNumeroResidencial(numero) {
         return { valido: false, mensagem: "Campo Invalido" };
     }
 
-    return { valido: true };
+    return { valido: true,  mensagem: "Cam"};
+}
+
+function validarCargo(cargo){
+    const errorMessage = document.getElementById('error-work');
+    if(cargo === ""){
+        
+        errorMessage.textContent = "Por favor, selecione sua profissão.";
+        errorMessage.style.display = "block";
+        return { valido: false, mensagem: "" };
+    } else {
+        errorMessage.style.display = "none"
+        return { valido: true, mensagem: "" };
+    }
+}
+
+function validarExperiencia(xp){
+
+    const radios = document.getElementsByName('nivel');
+    const errorMessage = document.getElementById('error-nivel');
+    let selected = false;
+
+    // Verifica se algum rádio está selecionado
+    for (let radio of radios) {
+        if (radio.checked) {
+            selected = true;
+            break;
+        }
+    }
+
+    if(!selected){
+        errorMessage.textContent = "Por favor, selecione sua experiência.";
+        errorMessage.style.display = "block";
+        return { valido: false, mensagem: "" };
+    } else {
+        errorMessage.style.display = "none"
+        return { valido: true, mensagem: "" };
+    }
 }
 
 
@@ -249,6 +286,8 @@ document.getElementById("form_data").addEventListener("submit", function(event) 
         'Bairro': document.getElementById("neighborhood").value.trim(),
         'Numero Residencia': document.getElementById("residential-number").value.trim(),
         'Rua': document.getElementById("street").value.trim(),
+        'Cargo' : document.getElementById("select-work").value,
+        'xp' : document.getElementById("select-work").value,
     };
 
     let camposVazios = [];
@@ -309,10 +348,18 @@ document.getElementById("form_data").addEventListener("submit", function(event) 
         document.getElementById("error-Rnumber").textContent = resultadoNum.mensagem;
         camposVazios.push("Numero Residencia");
     }
+ 
+    // Validação do cargo
+    const resultadoWork = validarCargo(DataList["Cargo"]);
+    if (!resultadoWork.valido) {
+        camposVazios.push("Cargo Desejado");
+    }
 
-
-
-
+    // Validação do nível de ExperiênciaS
+    const resultadoxp = validarExperiencia(DataList["xp"]);
+    if (!resultadoxp.valido) {
+        camposVazios.push("Nível de Experiência");
+    }
 
     // Exibindo os resultados
     if (camposVazios.length > 0) {

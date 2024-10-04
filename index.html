@@ -105,14 +105,15 @@
             </div>
 
             <div class="select-work">
-                <select class="select-work" name="profissao">
-                    <option value="">Selecione sua profissão</option>
-                    <option value="Desenvolvedor">Desenvolvedor</option>
-                    <option value="Analista">Analista</option>
-                    <option value="Gerente de TI">Gerente de TI</option>
-                    <option value="Suporte">Suporte</option>
-                </select>
-            </div>
+              <select id="select-work" name="profissao">
+                  <option value="">Selecione sua profissão</option>
+                  <option value="Desenvolvedor">Desenvolvedor</option>
+                  <option value="Analista">Analista</option>
+                  <option value="Gerente de TI">Gerente de TI</option>
+                  <option value="Suporte">Suporte</option>
+              </select>
+              <div class="error-message" id="error-work" style="color: red; display: none;"></div>
+          </div>
 
             <fieldset class="checkbox">
                 <legend>Quais linguagens você conhece?</legend>
@@ -137,28 +138,29 @@
             </fieldset>
 
             <fieldset class="experience-level">
-                <legend>Nível de Experiência:</legend>
-                <label>
-                    <input type="radio" name="nivel" value="jr">
-                    <span class="radio-custom"></span>
-                    Júnior
-                </label>
-                <label>
-                    <input type="radio" name="nivel" value="pl">
-                    <span class="radio-custom"></span>
-                    Pleno
-                </label>
-                <label>
-                    <input type="radio" name="nivel" value="sr">
-                    <span class="radio-custom"></span>
-                    Sênior
-                </label>
-                <label>
-                    <input type="radio" name="nivel" value="mt">
-                    <span class="radio-custom"></span>
-                    Master
-                </label>
-            </fieldset>
+              <legend>Nível de Experiência:</legend>
+              <label>
+                  <input type="radio" name="nivel" value="jr">
+                  <span class="radio-custom"></span>
+                  Júnior
+              </label>
+              <label>
+                  <input type="radio" name="nivel" value="pl">
+                  <span class="radio-custom"></span>
+                  Pleno
+              </label>
+              <label>
+                  <input type="radio" name="nivel" value="sr">
+                  <span class="radio-custom"></span>
+                  Sênior
+              </label>
+              <label>
+                  <input type="radio" name="nivel" value="mt">
+                  <span class="radio-custom"></span>
+                  Master
+              </label>
+              <div class="error-message" id="error-nivel" style="color: red; display: none;"></div>
+          </fieldset>
 
             <div class="subtitle_position"> 
                 <h2 id="subtitle_style" style="margin-top: 5px !important;">Informações Adicionais</h2>
