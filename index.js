@@ -75,37 +75,61 @@ document.getElementById('cep').addEventListener('input', async (e) => {
 
 // Functions de validações especificas do formulario
 
-
 function validateCpf(cpf) {
 
     // retira qualquer caractere não numérico
     cpf = cpf.replace(/\D/g, '')
 
     // se tiver menos de 11 caracteres retorna falso
-    if (cpf.length !== 11) return false;
+    if (cpf.length !== 11) return { valido: false, mensagem: "CPF Deve ser maior que 11 digitos!" };
     let soma = 0;
     let resto;
-    if (/^(\d)\1{10}$/.test(cpf)) return false // Verifica sequências iguais
+    if (/^(\d)\1{10}$/.test(cpf)) return { valido: false, mensagem: "CPF INVALIDO" }; // Verifica sequências iguais
 
     // verifica se o CPF é válido utilizando toda lógica de CPF
     for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
     resto = (soma * 10) % 11;
     if ((resto === 10) || (resto === 11)) resto = 0;
-    if (resto !== parseInt(cpf.substring(9, 10))) return false;
+    if (resto !== parseInt(cpf.substring(9, 10))) return { valido: false, mensagem: "CPF INVALIDO" };
 
     soma = 0;
     for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
     resto = (soma * 10) % 11;
     if ((resto === 10) || (resto === 11)) resto = 0;
-    if (resto !== parseInt(cpf.substring(10, 11))) return false;
+    if (resto !== parseInt(cpf.substring(10, 11))) return { valido: false, mensagem: "CPF INVALIDO" };
 
     // se passou por toda validação acima, retorna verdadeiro
     return true;
     
 }
 
+function validarNome(nome) {
+
+    nome = nome.trim();
+
+    // Verifica se o nome está vazio ou nulo
+    if (nome === "" || nome === null) {
+        return { valido: false, mensagem: "O nome é obrigatório." };
+    }
+
+    // Verifica se o nome tem pelo menos 2 caracteres
+    if (nome.length < 2) {
+        return { valido: false, mensagem: "Mínimo 2 caracteres." };
+    }
+
+    // Verifica se o nome contém apenas letras e espaços
+    const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/; // Aceita letras (incluindo caracteres acentuados) e espaços
+    if (!regex.test(nome)) {
+        return { valido: false, mensagem: "Somente letras e espaços!." };
+    }
+
+    return true;
+}
 
 document.getElementById("form_data").addEventListener("submit", function(event) {
+
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(msg => msg.textContent = '');
 
     const DataList = {
         'Nome': document.getElementById("name").value.trim(),
@@ -125,23 +149,26 @@ document.getElementById("form_data").addEventListener("submit", function(event) 
 
     let camposVazios = [];
 
-    for (const campo in DataList) {
-        if (DataList[campo] === "") {
-            camposVazios.push(campo); // Adiciona o nome do campo vazio ao array
-        }
+    const resultadoCpf = validateCpf(DataList["CPF"]);
+    if (!resultadoCpf.valido){
+        camposVazios.push("CPF");
+        document.getElementById("error-cpf").textContent = resultadoCpf.mensagem;
+        event.preventDefault()
+    }
+
+/* Validação do nome   */ 
+    const resultadoNome = validarNome(DataList["Nome"]);
+    if (!resultadoNome.valido) {
+        document.getElementById("error-name").textContent = resultadoNome.mensagem;
+        camposVazios.push("NOME");
     }
 
     // Exibindo os resultados
     if (camposVazios.length > 0) {
-        alert("Os seguintes campos estão vazios: " + camposVazios.join(', '));
-        event.preventDefault()
-    }
-
-    if (!validateCpf(DataList["CPF"])){
-        alert("CPF Inavlido");
+        alert("Os seguintes campos estão vazios ou invalidos: " + camposVazios.join(', '));
         event.preventDefault()
     } else {
-           
-    }}
+        alert("Formulario Enviado");
+    }
 
-    )
+    })
