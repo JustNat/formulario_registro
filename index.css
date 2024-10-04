@@ -401,7 +401,7 @@ textarea:focus {
 }
 
 #birthday{
-    width: 130px;
+    width: 160px;
 }
 
 #cpf{
@@ -411,7 +411,6 @@ textarea:focus {
 #email{
     width: 380px;
 }
-
 
 #phone{
     width: 200px;
