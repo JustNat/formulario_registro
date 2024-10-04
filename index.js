@@ -28,6 +28,7 @@ document.getElementById('phone').addEventListener("input", (e) => { // parâmetr
     e.target.value = phone
 })
 
+
 // requisição para pegar o endereço com a informação do CEP pela api viacep
 // deve ser async para indicar que um trecho do código deve ser esperado pelo resto
 async function getAddressFromCep(cep) {
@@ -45,14 +46,14 @@ async function getAddressFromCep(cep) {
 // preencher os campos de endereço baseado no CEP
 document.getElementById('cep').addEventListener('input', async (e) => {
     // impede a entrada de caracteres não numéricos
-    e.target.value = e.target.value.replace(/\D/g, '')
+    e.target.value = e.target.value.replace(/\D/g, '').replace(/(\d{8})\d+?$/, '$1')
     // se os caracteres no campo CEP forem menor que 8, faça o input disponível
     if (e.target.value.length !== 8) {
-        document.getElementById("country").disabled = false
-        document.getElementById("state").disabled = false
-        document.getElementById("city").disabled = false
-        document.getElementById("neighborhood").disabled = false
-        document.getElementById("street").disabled = false
+        document.getElementById("country").disabled = true
+        document.getElementById("state").disabled = true
+        document.getElementById("city").disabled = true
+        document.getElementById("neighborhood").disabled = true
+        document.getElementById("street").disabled = true
     }
     // caso tiver 8 caracteres e o cep foi encontrado, preencha os campos e os deixe indisponível
     else {
@@ -71,6 +72,8 @@ document.getElementById('cep').addEventListener('input', async (e) => {
         }
     }
 })
+
+
 
 
 // Functions de validações especificas do formulario
@@ -99,7 +102,7 @@ function validateCpf(cpf) {
     if (resto !== parseInt(cpf.substring(10, 11))) return { valido: false, mensagem: "CPF INVALIDO" };
 
     // se passou por toda validação acima, retorna verdadeiro
-    return true;
+    return { valido: true, mensagem: "" };
     
 }
 
@@ -109,7 +112,7 @@ function validarNome(nome) {
 
     // Verifica se o nome está vazio ou nulo
     if (nome === "" || nome === null) {
-        return { valido: false, mensagem: "O nome é obrigatório." };
+        return { valido: false, mensagem: "Campo obrigatório." };
     }
 
     // Verifica se o nome tem pelo menos 2 caracteres
@@ -123,8 +126,109 @@ function validarNome(nome) {
         return { valido: false, mensagem: "Somente letras e espaços!." };
     }
 
-    return true;
+    return { valido: true, mensagem: "" };
 }
+
+function validarDataNascimento(data) {
+
+    // Verifica se a data está vazia
+    if (!data) {
+        return { valido: false, mensagem: "Selecione uma Data!" };
+    }
+
+    const dataNascimento = new Date(data);
+    const dataAtual = new Date();
+
+    // Verifica se a data é válida
+    if (isNaN(dataNascimento.getTime())) {
+        return { valido: false, mensagem: "Data de nascimento inválida." };
+    }
+
+    // Verifica se a data é futura
+    if (dataNascimento > dataAtual) {
+        return { valido: false, mensagem: "Data de nascimento inválida." };
+    }
+
+    // Verifica uma idade mínima
+    const idadeMinima = 16;
+    const anoAtual = dataAtual.getFullYear();
+    const anoNascimento = dataNascimento.getFullYear();
+    const idade = anoAtual - anoNascimento;
+
+    if (idade < idadeMinima) {
+        return { valido: false, mensagem: `Você deve ter pelo menos ${idadeMinima} anos.` };
+    }
+
+    return { valido: true, mensagem: "" };
+}
+
+function validarEmail(email) {
+
+    // Verifica se o e-mail está vazio
+    if (!email) {
+        return { valido: false, mensagem: "Campo obrigatório." };
+    }
+
+    // Expressão regular para validar o formato do e-mail
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Verifica se o e-mail corresponde ao formato esperado
+    if (!regex.test(email)) {
+        return { valido: false, mensagem: "E-mail inválido." };
+    }
+
+    return { valido: true, mensagem: "" };
+}
+
+function validarTelefone(telefone) {
+    // Remove caracteres não numéricos
+    telefone = telefone.replace(/\D/g, '');
+
+    // Verifica se o telefone está vazio
+    if (!telefone) {
+        return { valido: false, mensagem: "Campo é obrigatório." };
+    }
+
+    if (telefone.length != 12) {
+        return { valido: false, mensagem: "Telefone invalido" };
+    }
+
+    if(telefone[3] != 9){
+        return { valido: false, mensagem: "Telefone invalido" };
+    }
+
+    return { valido: true, mensagem: "" };
+}
+
+function validarCEP(cep) {
+    // Remove caracteres não numéricos
+    cep = cep.replace(/\D/g, '');
+
+    if (cep.length !== 8) {
+        return { valido: false, mensagem: "O CEP deve ter 8 dígitos." };
+    }
+    return { valido: true, mensagem: "" };
+}
+
+function validarNumeroResidencial(numero) {
+
+    // Remove espaços em branco no início e no final
+    numero = numero.trim();
+
+    // Verifica se o número está vazio ou nulo 
+    if (numero === '' || numero === null) {
+        return { valido: false, mensagem: "Campo Obrigatório" };
+    }
+
+    // Verifica se o número contém apenas caracteres válidos (números, letras, e caracteres como /, - ou .)
+    const regex = /^[a-zA-Z0-9]+$/; // Permite letras, números e alguns caracteres especiais
+    if (!regex.test(numero)) {
+        return { valido: false, mensagem: "Campo Invalido" };
+    }
+
+    return { valido: true };
+}
+
 
 document.getElementById("form_data").addEventListener("submit", function(event) {
 
@@ -149,6 +253,7 @@ document.getElementById("form_data").addEventListener("submit", function(event) 
 
     let camposVazios = [];
 
+    // Validação do CPF  
     const resultadoCpf = validateCpf(DataList["CPF"]);
     if (!resultadoCpf.valido){
         camposVazios.push("CPF");
@@ -156,12 +261,58 @@ document.getElementById("form_data").addEventListener("submit", function(event) 
         event.preventDefault()
     }
 
-/* Validação do nome   */ 
+    // Validação do nome
     const resultadoNome = validarNome(DataList["Nome"]);
     if (!resultadoNome.valido) {
         document.getElementById("error-name").textContent = resultadoNome.mensagem;
         camposVazios.push("NOME");
     }
+
+    // Validação do Sobrenome
+    const resultadoLastName = validarNome(DataList["Sobrenome"]);
+    if (!resultadoLastName.valido) {
+        document.getElementById("error-last-name").textContent = resultadoLastName.mensagem;
+        camposVazios.push("Sobrenome");
+    }
+
+    // Validação da Data de Nascimento
+    const resultadoDate = validarDataNascimento(DataList["Data de Aniversario"]);
+    if (!resultadoDate.valido) {
+        document.getElementById("error-birthday").textContent = resultadoDate.mensagem;
+        camposVazios.push("Data de Aniversario");
+    }
+
+    // Validação do Email
+    const resultadoEmail = validarEmail(DataList["email"]);
+    if (!resultadoEmail.valido) {
+        document.getElementById("error-email").textContent = resultadoEmail.mensagem;
+        camposVazios.push("Email");
+    }
+
+    // Validação do Telefone
+    const resultadoPhone = validarTelefone(DataList["Telefone"]);
+    if (!resultadoPhone.valido) {
+        document.getElementById("error-phone").textContent = resultadoPhone.mensagem;
+        camposVazios.push("Telefone");
+    }
+
+    // Validação do Cep
+    const resultadoCEP = validarCEP(DataList["CEP"]);
+    if (!resultadoCEP.valido) {
+        document.getElementById("error-cep").textContent = resultadoCEP.mensagem;
+        camposVazios.push("CEP");
+    }
+
+    // Validação do Numero da Residência
+    const resultadoNum = validarNumeroResidencial(DataList["Numero Residencia"]);
+    if (!resultadoNum.valido) {
+        document.getElementById("error-Rnumber").textContent = resultadoNum.mensagem;
+        camposVazios.push("Numero Residencia");
+    }
+
+
+
+
 
     // Exibindo os resultados
     if (camposVazios.length > 0) {
