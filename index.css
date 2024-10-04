@@ -33,6 +33,7 @@ body {
 }
 
 #form-div {
+    
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -42,31 +43,83 @@ body {
 }
 
 #form {
+  
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    padding: 8px 0px; 
+    width: 80%;
+    padding: 20px 20px; 
     margin-top: 5px;
     border: 5px solid linear-gradient(120deg, #00092e 28%, #4d0000 100%);
     border-radius: 5px;
     background-color: #ddd;
+    display: flex;
+    flex-wrap: wrap; /* Para permitir quebra de linha entre os pares */
+    gap: 15px;
 }
 
-.form-spacing {
+#adress_style{
     display: flex;
-    flex-direction: column;
+	align-items: center;
+	position: relative;
+	max-width: 100%;
+}
+
+
+/* Definir estilos dos elementos do form */
+.form-spacing {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-top: 5px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .form-spacing * {
-    position: relative;
-    margin-right: 15px;
-    padding: 5px 0px;
+    font-size: 20px;
+    margin-right: 5px;
+    margin-top: 5px;
 }
 
+/* estilizando elementos do form */
+
+.custom_input {
+	display: flex;
+	align-items: center;
+	position: relative;
+	max-width: 100%;
+}
+
+.input {
+	font-size: 18px;
+	padding: 5px 10px;
+	width: 100%;
+	outline: none;
+	background: #FFFFFF;
+	color: #000000;
+	border: 2px solid rgb(71, 71, 71);
+	border-radius: 10px;
+	box-shadow: 3px 3px 2px 0px #E2E2E2;
+	transition: .1s ease;
+}
+
+.input:focus {
+	background: #F2F2F2;
+	border: 2px solid #001361;
+	border-radius: 10px;
+}
+
+.custom_input label {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    
+}
+
+
+/* estilo do botão */ 
 .button {
     font-family: Arial, sans-serif;
     font-size:80%;
@@ -87,6 +140,10 @@ body {
     background-color:#414141;
 }
 
+
+/* ----------------- inicio CHECKBOX (CSS,JS...) ----------------------------------- */
+
+
 /* Container do checkbox */
 .checkbox-container {
     display: inline-flex;
@@ -103,7 +160,7 @@ body {
 }
 
 .checkbox-container:hover {
-    color: #861b00;
+    color: #001361;
 }
 
 /* Checkbox oculto */
@@ -126,7 +183,7 @@ body {
 }
 
 .checkbox-container:hover .custom-checkbox {
-    border-color: #861b00;
+    border-color: #001361;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -147,8 +204,8 @@ body {
 
 /* Quando o checkbox é marcado */
 .checkbox-container input[type="checkbox"]:checked + .custom-checkbox {
-    background-color: #861b00;
-    border-color: #861b00;
+    background-color: #001361;
+    border-color: #001361;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: scale(1.1);
 }
@@ -230,14 +287,14 @@ body {
 
 /* Efeito ao passar o mouse */
 .select-custom:hover {
-    border-color: #861b00;
+    border-color: #001361;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* Quando o select está em foco */
 .select-custom:focus {
     outline: none;
-    border-color: #861b00;
+    border-color: #001361;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -293,7 +350,7 @@ body {
 
 /* Efeito ao passar o mouse nos rótulos */
 .fieldset-custom label:hover {
-    color: #861b00; 
+    color: #001361; 
 }
 
 /* Radio buttons ocultos para evitar conflito com envio */
@@ -315,7 +372,7 @@ body {
 
 /* Quando o radio button está marcado */
 .fieldset-custom input[type="radio"]:checked + .radio-custom {
-    border-color: #861b00; 
+    border-color: #001361; 
 }
 
 /* Marca do botão de rádio */
@@ -326,7 +383,7 @@ body {
     left: 50%;
     width: 10px; 
     height: 10px; 
-    background-color: #861b00; 
+    background-color: #001361; 
     border-radius: 50%; 
     transform: translate(-50%, -50%);
 }
@@ -358,6 +415,6 @@ textarea {
 
 /* Estilo para o foco do textarea */
 textarea:focus {
-    border-color: #861b00; 
+    border-color: #001361; 
     box-shadow: 0 0 5px #490f00(76, 175, 80, 0.5); 
 }
