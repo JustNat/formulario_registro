@@ -90,4 +90,5 @@ document.getElementById('form').addEventListener('onSubmit', (e) => {
     if (!validateCpf(cpfValue)) {
         alert("CPF inválido. Verifique o campo.")
     }
+    
 })
