@@ -14,6 +14,20 @@ document.getElementById('cpf').addEventListener("input", (e) => { // parâmetro 
     e.target.value = cpf
 })
 
+document.getElementById('phone').addEventListener("input", (e) => { // parâmetro 'e' refere-se ao evento que ocorreu
+    // e.target refere-se ao elemento do HTML que disparou o evento
+    // e.target.value é o valor que o elemento HTML possui no momento
+    phone = e.target.value
+    // faz com que o campo telefone(phone) seja formatado automaticamente no formato : (XX)X-XXXX-XXXX
+    phone = phone
+    .replace(/\D/g, '') // Remove tudo que não for número
+    .replace(/(\d{0})(\d)/, '$1($2')  // Adiciona o parêntese de abertura antes do primeiro dígito
+    .replace(/(\d{3})(\d)/, '$1) $2')  // Fecha o parêntese após os três primeiros dígitos e adiciona espaço
+    .replace(/(\d{1})(\d{4})(\d{4})/, '$1 $2-$3')// Formata o restante como "9 9865-9520"
+    .replace(/(-\d{4})\d+?$/, '$1');  
+    e.target.value = phone
+})
+
 function validateCpf(cpf) {
 
     // retira qualquer caractere não numérico

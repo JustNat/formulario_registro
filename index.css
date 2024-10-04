@@ -16,6 +16,8 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 #main-box {
@@ -50,31 +52,36 @@ body {
     width: 80%;
     padding: 20px 20px; 
     margin-top: 5px;
-    border: 5px solid linear-gradient(120deg, #00092e 28%, #4d0000 100%);
-    border-radius: 5px;
+    border: 2px solid #001361;
+    border-radius: 30px;
     background-color: #ddd;
     display: flex;
     flex-wrap: wrap; /* Para permitir quebra de linha entre os pares */
     gap: 15px;
 }
 
-#adress_style{
-    display: flex;
-	align-items: center;
-	position: relative;
+#subtitle_style{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 	max-width: 100%;
+    margin-top: 30px;
+    margin-bottom: 0px;
 }
 
+.subtitle_position {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    width: 100%;
+
+}
 
 /* Definir estilos dos elementos do form */
 .form-spacing {
     width: 100%;
-    padding: 10px;
     margin-top: 5px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
 }
 
 .form-spacing * {
@@ -417,4 +424,54 @@ textarea {
 textarea:focus {
     border-color: #001361; 
     box-shadow: 0 0 5px #490f00(76, 175, 80, 0.5); 
+}
+
+/* Tamanho Informações Pessoais */
+
+#last-name{
+    width: 380px;
+}
+
+#birthday{
+    width: 130px;
+}
+
+#cpf{
+    width: 130px;
+}
+
+#email{
+    width: 380px;
+}
+
+
+#phone{
+    width: 150px;
+}
+
+/* Tamanho Informações do endereço */
+
+#state{
+    width: 30px;
+}
+
+#country{
+    width: 100px;
+}
+
+#residential-number{
+    width: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+#cep{
+    width: 130px;
 }
