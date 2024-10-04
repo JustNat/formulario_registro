@@ -15,7 +15,7 @@
     <div id="main-box">
         <header id="header">
             <div id="title">
-                <h1 style="padding: 8px; color: white">Formulário de Registro</h1>
+                <h1 style="padding: 2px; color: white">Formulário de Registro</h1>
             </div>
         </header>
         <form id="form" autocomplete="on">
@@ -98,9 +98,12 @@
             </div>
             </div>
 
-            <label for="profissao">Profissão:</label>
-            <div class="select-container">
-                <select class="select-custom" name="profissao">
+            <div class="subtitle_position"> 
+                <h2 id="subtitle_style">Selecionar cargo desejado</h2>
+            </div>
+
+            <div class="select-work">
+                <select class="select-work" name="profissao">
                     <option value="">Selecione sua profissão</option>
                     <option value="Desenvolvedor">Desenvolvedor</option>
                     <option value="Analista">Analista</option>
@@ -108,6 +111,7 @@
                     <option value="Suporte">Suporte</option>
                 </select>
             </div>
+
             <fieldset class="checkbox">
                 <legend>Quais linguagens você conhece?</legend>
                 <label class="checkbox-container"><input type="checkbox"><span class="custom-checkbox"></span><span
@@ -130,7 +134,7 @@
                         class="checkbox-text">PYTHON</span></label>
             </fieldset>
 
-            <fieldset class="fieldset-custom">
+            <fieldset class="experience-level">
                 <legend>Nível de Experiência:</legend>
                 <label>
                     <input type="radio" name="nivel" value="jr">
@@ -154,8 +158,10 @@
                 </label>
             </fieldset>
 
-            <label for="infoAdicional" class="info-custom">Informações Adicionais:</label>
-            <textarea id="infoAdicional" name="infoAdicional" rows="4"></textarea>
+            <div class="subtitle_position"> 
+                <h2 id="subtitle_style" style="margin-top: 5px !important;">Informações Adicionais</h2>
+            </div>
+            <textarea placeholder="Nos conte um pouco mais..." id="infoAdicional" name="infoAdicional" rows="4"></textarea>
             <td></td>
             <div>
                 <button class="button" type="reset">Limpar</button>
