@@ -18,7 +18,7 @@
                 <h1 style="padding: 2px; color: white">Formulário de Registro</h1>
             </div>
         </header>
-        <form id="form" autocomplete="on">
+        <form id="form_data" autocomplete="on" onsubmit="return validarFormulario()">
             <div class="form-spacing">
         
             <div class="subtitle_position"> 
@@ -26,33 +26,33 @@
             </div>
                
               <div class="custom_input">
-                <label for="name">Nome</label>
-                <input class="input" id="name" type="text" />
+                <input type="text" id="name" placeholder="Nome">
+                <div class="error-message" id="error-name"></div>
               </div>
         
               <div class="custom_input">
-                <label for="last-name">Sobrenome</label>
-                <input class="input" id="last-name" type="text" />
+                <input type="text" id="last-name" placeholder="Sobrenome">
+                <div class="error-message" id="error-last-name"></div>
               </div>
         
               <div class="custom_input">
-                <label for="birthday">Data de nascimento</label>
-                <input class="input" id="birthday" type="date" />
+                <input type="date" id="birthday">
+                <div class="error-message" id="error-birthday"></div>
               </div>
         
               <div class="custom_input">
-                <label for="cpf">CPF</label>
-                <input class="input" id="cpf" type="text" name="cpf" />
+                <input type="text" id="cpf" placeholder="CPF">
+                <div class="error-message" id="error-cpf"></div>
               </div>
         
               <div class="custom_input">
-                <label for="email">Email</label>
-                <input class="input" id="email" type="email" />
+                <input type="email" id="email" placeholder="Email">
+                <div class="error-message" id="error-email"></div>
               </div>
         
               <div class="custom_input">
-                <label for="phone">Celular (DDD + 9)</label>
-                <input class="input" id="phone" type="text" />
+                <input type="text" id="phone" placeholder="Telefone">
+                <div class="error-message" id="error-phone"></div>
               </div>
 
             <div class="subtitle_position"> 
@@ -62,38 +62,38 @@
             <div class="form-spacing">
 
               <div class="custom_input">
-                <label for="cep">CEP</label>
-                <input class="input" id="cep" type="text" />
+                <input type="text" id="cep" placeholder="CEP">
+                <div class="error-message" id="error-cep"></div>
               </div>
         
               <div class="custom_input">
-                <label for="country">País</label>
-                <input class="input" id="country" type="text" />
+                <input type="text" id="country" placeholder="País">
+                <div class="error-message" id="error-country"></div>
               </div>
         
               <div class="custom_input">
                 <label for="state">Estado</label>
-                <input class="input" id="state" type="text" />
+                <input id="state" type="text" />
               </div>
         
               <div class="custom_input">
                 <label for="city">Cidade</label>
-                <input class="input" id="city" type="text" />
+                <input id="city" type="text" />
               </div>
         
               <div class="custom_input">
                 <label for="neighborhood">Bairro</label>
-                <input class="input" id="neighborhood" type="text" />
+                <input id="neighborhood" type="text" />
               </div>
         
               <div class="custom_input">
                 <label for="street">Rua</label>
-                <input class="input" style="width: 500px !important;" id="street" type="text" />
+                <input style="width: 500px !important;" id="street" type="text" />
               </div>
         
               <div class="custom_input">
                 <label for="residential-number">Número</label>
-                <input class="input" id="residential-number" type="text" />
+                <input id="residential-number" type="text" />
               </div>
             </div>
             </div>
@@ -169,7 +169,6 @@
             </div>
         </form>
     </div>
-
     <script src="index.js"></script>
 </body>
 
