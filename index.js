@@ -85,8 +85,9 @@ document.getElementById('cep').addEventListener('input', async (e) => {
     }
 })
 
-document.getElementById('form').addEventListener('onSubmit', (e) => {
+document.getElementById('form').addEventListener('submit', (e) => {
     const cpfValue = document.getElementById('cpf').target.value
+    console.log(validateCpf(cpfValue))
     if (!validateCpf(cpfValue)) {
         alert("CPF inválido. Verifique o campo.")
     }

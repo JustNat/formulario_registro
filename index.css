@@ -280,7 +280,7 @@ body {
 
 /* Radio buttons ocultos */
 .fieldset-custom input[type="radio"] {
-    display: none; 
+    width: 0; 
 }
 
 /* Estilo do botão de rádio personalizado */
