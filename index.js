@@ -69,6 +69,12 @@ document.getElementById('cep').addEventListener('input', async (e) => {
             document.getElementById("neighborhood").disabled = true
             document.getElementById("street").value = response.logradouro
             document.getElementById("street").disabled = true
+        } else{
+            document.getElementById("country").disabled = false
+            document.getElementById("state").disabled = false
+            document.getElementById("city").disabled = false
+            document.getElementById("neighborhood").disabled = false
+            document.getElementById("street").disabled = false
         }
     }
 })
@@ -266,6 +272,20 @@ function validarExperiencia(xp){
     }
 }
 
+function validarEnderecoManual(address){
+
+    const requiredFields = ["Pais", "Rua", "Estado", "Bairro", "Cidade"];
+    const isAnyFieldEmpty = requiredFields.some(field => address[field] === "");
+
+    if (isAnyFieldEmpty) {
+        return { valido: false, mensagem: "Endereço Invalido, Confira Novamente!" };
+    }
+    
+return { valido: true, mensagem: "" };
+           
+}
+
+
 
 document.getElementById("form_data").addEventListener("submit", function(event) {
 
@@ -280,12 +300,7 @@ document.getElementById("form_data").addEventListener("submit", function(event) 
         'email': document.getElementById("email").value.trim(),
         'Telefone': document.getElementById("phone").value.trim(),
         'CEP': document.getElementById("cep").value,
-        'Pais': document.getElementById("country").value.trim(),
-        'Estado': document.getElementById("state").value.trim(),
-        'Cidade': document.getElementById("city").value.trim(),
-        'Bairro': document.getElementById("neighborhood").value.trim(),
         'Numero Residencia': document.getElementById("residential-number").value.trim(),
-        'Rua': document.getElementById("street").value.trim(),
         'Cargo' : document.getElementById("select-work").value,
         'xp' : document.getElementById("select-work").value,
     };
@@ -359,6 +374,21 @@ document.getElementById("form_data").addEventListener("submit", function(event) 
     const resultadoxp = validarExperiencia(DataList["xp"]);
     if (!resultadoxp.valido) {
         camposVazios.push("Nível de Experiência");
+    }
+
+    const AdressList = {
+        'Pais': document.getElementById("country").value.trim(),
+        'Estado': document.getElementById("state").value.trim(),
+        'Cidade': document.getElementById("city").value.trim(),
+        'Bairro': document.getElementById("neighborhood").value.trim(),
+        'Rua': document.getElementById("street").value.trim(),
+    }
+
+    // Validação do Endereço Manual
+    const resultadoAdressM = validarEnderecoManual(AdressList);
+    if (!resultadoAdressM.valido) {
+        document.getElementById("error-adressG").textContent = resultadoAdressM.mensagem;
+        camposVazios.push("Endereço");
     }
 
     // Exibindo os resultados
