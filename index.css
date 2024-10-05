@@ -187,7 +187,6 @@ input {
 	clip-path: polygon(50% 80%, 0 20%, 100% 20%);
 }
 
-/* ----------------- FIM SELECT (PROFISSÃO) ----------------------------------- */
 
 /* ----------------- inicio CHECKBOX (CSS,JS...) ----------------------------------- */
 
@@ -197,8 +196,6 @@ input {
     border: 2px solid rgb(71, 71, 71);
 }
 
-
-/* Container do checkbox */
 .checkbox-container {
     display: inline-flex;
     align-items: center;
@@ -223,12 +220,12 @@ input {
     color: #001361;
 }
 
-/* Checkbox oculto */
+
 .checkbox-container input[type="checkbox"] {
     width: 0;
 }
 
-/* Estilo do checkbox personalizado */
+
 .custom-checkbox {
     width: 20px;
     height: 20px;
@@ -247,7 +244,7 @@ input {
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Marca do check */
+
 .custom-checkbox::after {
     content: '';
     position: absolute;
@@ -274,7 +271,7 @@ input {
     display: flex;
 }
 
-/* Efeito suave de transição do "check" */
+
 .custom-checkbox::after {
     opacity: 0;
     transform: rotate(45deg) scale(0);
@@ -295,12 +292,8 @@ input {
     transition: color 0.3s ease;
 }
 
-/* ----------------- FIM CHECKBOX (CSS,JS...) ----------------------------------- */
-
-
 /* ----------------- INICIO FIELDSET (NIVEIS DE EXPERIENCIA) ----------------------------------- */
 
-/* Estilo do fieldset */
 .experience-level {
     border: 2px solid rgb(71, 71, 71);
     border-radius: 10px; 
@@ -309,7 +302,6 @@ input {
     background-color: white;
 }
 
-/* Título do fieldset */
 .experience-level legend {
     font-family: Arial;
     font-size: 15px; 
@@ -322,7 +314,6 @@ input {
    
 }
 
-/* Estilo dos rótulos dos radio buttons */
 .experience-level label {
     font-family: Arial;
     align-items: center;
@@ -335,17 +326,14 @@ input {
     transition: color 0.3s ease;
 }
 
-/* Efeito ao passar o mouse nos rótulos */
 .experience-level label:hover {
     color: #001361; 
 }
 
-/* Radio buttons ocultos para evitar conflito com envio */
 .experience-level input[type="radio"] {
     width: 0%;
 }
 
-/* Estilo do botão de rádio personalizado */
 .radio-custom {
     background-color: #ffffff;
     width: 16px;
@@ -357,12 +345,10 @@ input {
     transition: border-color 0.3s ease; 
 }
 
-/* Quando o radio button está marcado */
 .experience-level input[type="radio"]:checked + .radio-custom {
     border-color: #001361; 
 }
 
-/* Marca do botão de rádio */
 .experience-level input[type="radio"]:checked + .radio-custom::after {
     content: ''; 
     position: absolute; 
@@ -377,8 +363,6 @@ input {
 
 /*---------- inicio informações adicionais ------------- */ 
 
-/* Estilo do label */
-
 .info-custom {
     font-family: Arial, sans-serif;
     font-size: 15px;
@@ -388,7 +372,6 @@ input {
     display: block; 
 }
 
-/* Estilo do textarea */
 textarea {
     font-family: Arial, sans-serif;
     width: calc(100% - 1em); 
@@ -400,7 +383,6 @@ textarea {
     resize: vertical;
 }
 
-/* Estilo para o foco do textarea */
 textarea:focus {
     border-color: #001361; 
     box-shadow: 0 0 5px #490f00(76, 175, 80, 0.5); 
@@ -446,6 +428,8 @@ textarea:focus {
     width: 130px;
 }
 
+
+/* Mensagens de Erro ao lado dos inputs */
 
 .input-error {
     border: 2px solid red; 
