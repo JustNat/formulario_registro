@@ -1,4 +1,7 @@
-// toda vez que ocorrer um evento do tipo "input" no elemento de ID "cpf", faça essa função 
+
+
+// toda vez que ocorrer um evento do tipo "input" no elemento de ID "cpf e phone", faça essas funções:
+
 document.getElementById('cpf').addEventListener("input", (e) => { // parâmetro 'e' refere-se ao evento que ocorreu
     // e.target refere-se ao elemento do HTML que disparou o evento
     // e.target.value é o valor que o elemento HTML possui no momento
@@ -14,17 +17,15 @@ document.getElementById('cpf').addEventListener("input", (e) => { // parâmetro 
     e.target.value = cpf
 })
 
-document.getElementById('phone').addEventListener("input", (e) => { // parâmetro 'e' refere-se ao evento que ocorreu
-    // e.target refere-se ao elemento do HTML que disparou o evento
-    // e.target.value é o valor que o elemento HTML possui no momento
+document.getElementById('phone').addEventListener("input", (e) => { 
     phone = e.target.value
     // faz com que o campo telefone(phone) seja formatado automaticamente no formato : (XX)X-XXXX-XXXX
     phone = phone
     .replace(/\D/g, '') // Remove tudo que não for número
     .replace(/(\d{0})(\d)/, '$1($2')  // Adiciona o parêntese de abertura antes do primeiro dígito
     .replace(/(\d{3})(\d)/, '$1) $2')  // Fecha o parêntese após os três primeiros dígitos e adiciona espaço
-    .replace(/(\d{1})(\d{4})(\d{4})/, '$1 $2-$3')// Formata o restante como "9 9865-9520"
-    .replace(/(-\d{4})\d+?$/, '$1');  
+    .replace(/(\d{1})(\d{4})(\d{4})/, '$1 $2-$3') // Formata o restante como "X XXXX-XXXX"
+    .replace(/(-\d{4})\d+?$/, '$1');  // impede mais digitos
     e.target.value = phone
 })
 
@@ -78,8 +79,6 @@ document.getElementById('cep').addEventListener('input', async (e) => {
         }
     }
 })
-
-
 
 
 // Functions de validações especificas do formulario
@@ -195,10 +194,11 @@ function validarTelefone(telefone) {
         return { valido: false, mensagem: "Campo é obrigatório." };
     }
 
+    // Verifica se o telefone tem o tamanho esperado
     if (telefone.length != 12) {
         return { valido: false, mensagem: "Telefone invalido" };
     }
-
+    // Verifica se o dígito 9 está correto
     if(telefone[3] != 9){
         return { valido: false, mensagem: "Telefone invalido" };
     }
@@ -209,7 +209,7 @@ function validarTelefone(telefone) {
 function validarCEP(cep) {
     // Remove caracteres não numéricos
     cep = cep.replace(/\D/g, '');
-
+    // Valida o tamanho do CEP
     if (cep.length !== 8) {
         return { valido: false, mensagem: "O CEP deve ter 8 dígitos." };
     }
@@ -237,8 +237,9 @@ function validarNumeroResidencial(numero) {
 
 function validarCargo(cargo){
     const errorMessage = document.getElementById('error-work');
+
+    // Verifica se é vazio e foi selecionado uma opção
     if(cargo === ""){
-        
         errorMessage.textContent = "Por favor, selecione sua profissão.";
         errorMessage.style.display = "block";
         return { valido: false, mensagem: "" };
@@ -277,6 +278,7 @@ function validarEnderecoManual(address){
     const requiredFields = ["Pais", "Rua", "Estado", "Bairro", "Cidade"];
     const isAnyFieldEmpty = requiredFields.some(field => address[field] === "");
 
+    // Valida os campos foram preenchidos
     if (isAnyFieldEmpty) {
         return { valido: false, mensagem: "Endereço Invalido, Confira Novamente!" };
     }
@@ -376,6 +378,8 @@ document.getElementById("form_data").addEventListener("submit", function(event) 
         camposVazios.push("Nível de Experiência");
     }
 
+
+     // Validação do Endereço caso escrito manual
     const AdressList = {
         'Pais': document.getElementById("country").value.trim(),
         'Estado': document.getElementById("state").value.trim(),
@@ -384,7 +388,6 @@ document.getElementById("form_data").addEventListener("submit", function(event) 
         'Rua': document.getElementById("street").value.trim(),
     }
 
-    // Validação do Endereço Manual
     const resultadoAdressM = validarEnderecoManual(AdressList);
     if (!resultadoAdressM.valido) {
         document.getElementById("error-adressG").textContent = resultadoAdressM.mensagem;
