@@ -26,7 +26,7 @@ Validação:
 [ x ]  Verifique se todos os campos  foram preenchidos corretamente.
 [ x ]  Verifique se os campos estão vazios, nulos ou incompletos.
 [ x ]  Valide o formato do CPF, CEP, e-mail, telefone e data de nascimento.
-[  ]  Garanta que uma opção de profissão e nível de experiência seja selecionada.
+[ x ]  Garanta que uma opção de profissão e nível de experiência seja selecionada.
 [ x ]  Mostre mensagens de erro claras caso alguma validação falhe.
 [ x ]  As validações devem ser desenvolvidas de preferencia em um arquivo JavaScript externo.
 
